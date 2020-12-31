@@ -17,21 +17,21 @@
         <h2>Create a New Animal Card</h2>
         <form class="form" action="http://localhost:3001/api/v1/users" method="post">
           <label for="animalName">Name of Animal</label>
-          <input id="input--name" type="text" name="animalName" placeholder="domestic housecat">
+          <input id="input--name" type="text" name="animalName" value="domestic housecat">
           <label for="animalDiet">Diet of Animal</label>
-          <input id="input--diet" type="text" name="animalDiet" placeholder="meat, meat, & more meat!">
+          <input id="input--diet" type="text" name="animalDiet" value="meat, meat, & more meat!">
           <label for="animalFact">Fun Fact about Animal</label>
-          <input id="input--fact" type="text" name="animalFact" placeholder="housecats aren\'t 100% domesticated">
+          <input id="input--fact" type="text" name="animalFact" value="housecats aren't 100% domesticated">
           <input id="input--button" type="button" name="submit" value="Submit">
         </form>
       </article>
       <template id="template--card">
         <article class="main--card">
-          <h2 class="card--name">Grizzly Bears</h2>
+          <h2 class="card--name">Animal Name</h2>
           <h3>Diet</h3>
-          <p class="card--diet">seeds, berries, roots, grasses, fungi, deer, elk, fish & insects</p>
+          <p class="card--diet">Animal Diet</p>
           <h3>Fun Fact</h3>
-          <p class="card--fact">The grizzly bear is the official animal of the state of Montana since 1982.</p>
+          <p class="card--fact">Animal Fun Fact</p>
           <p class="card--id">00</p>
         </article>
       </template>

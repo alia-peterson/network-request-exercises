@@ -22,11 +22,12 @@
           <input id="input--diet" type="text" name="animalDiet" value="meat, meat, & more meat!">
           <label for="animalFact">Fun Fact about Animal</label>
           <input id="input--fact" type="text" name="animalFact" value="housecats aren't 100% domesticated">
-          <input id="input--button" type="button" name="submit" value="Submit">
+          <input id="input--button" type="button" name="submit" value="Submit" onclick="createNewCard()">
         </form>
       </article>
       <template id="template--card">
-        <article class="main--card">
+        <article class="main--card" id="0">
+          <button class="card--delete" type="button" name="button" onclick="deleteCard()">X</button>
           <h2 class="card--name">Animal Name</h2>
           <h3>Diet</h3>
           <p class="card--diet">Animal Diet</p>

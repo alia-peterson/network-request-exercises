@@ -26,6 +26,14 @@ p {
   text-transform: capitalize;
 }
 
+.card--delete {
+  background-color: #2196F3;
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  z-index: 1;
+}
+
 .card--id {
   right: 10%;
   bottom: 1%;
@@ -52,8 +60,7 @@ p {
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(40%, 1fr));
-  height: 100vh;
+  grid-template-rows: repeat(auto-fit, minmax(1fr, 20%));
   padding: 1em;
 }
 

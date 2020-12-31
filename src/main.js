@@ -20,7 +20,7 @@ const savedCards = {
 const newCard = {
   method: 'POST',
   body: JSON.stringify({
-    id: 5,
+    id: currentID,
     name: inputName.value,
     diet: inputDiet.value,
     fun_fact: inputFact.value
@@ -34,25 +34,27 @@ const newCard = {
 
 function displayStoredCards() {
   fetch('http://localhost:3001/api/v1/animals')
-  .then(response => response.json())
-  .then(animals => {
-    currentID = animals.length
-    console.log(currentID);
-    animals.forEach(animal => {
-      const card = cardTemplate.content.cloneNode(true)
-      card.querySelector('p.card--id').innerText = animal.id
-      card.querySelector('h2.card--name').innerText = animal.name
-      card.querySelector('p.card--diet').innerText = animal.diet
-      card.querySelector('p.card--fact').innerText = animal.fun_fact
+    .then(response => response.json())
+    .then(animals => {
+      currentID = animals.length
 
-      cardDisplay.appendChild(card)
+      animals.forEach(animal => createCardElement(animal))
     })
-  })
 }
 
 function createNewCard() {
   fetch('http://localhost:3001/api/v1/animals', newCard)
-  .then(response => response.json())
-  .then(animal => console.log(animal))
-  .catch(error => console.log(error))
+    .then(response => response.json())
+    .then(animal => console.log(animal))
+    .catch(error => console.log(error))
+}
+
+function createCardElement(input) {
+  const card = cardTemplate.content.cloneNode(true)
+  card.querySelector('p.card--id').innerText = input.id
+  card.querySelector('h2.card--name').innerText = input.name
+  card.querySelector('p.card--diet').innerText = input.diet
+  card.querySelector('p.card--fact').innerText = input.fun_fact
+
+  cardDisplay.appendChild(card)
 }

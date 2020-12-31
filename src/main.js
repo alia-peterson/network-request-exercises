@@ -13,40 +13,38 @@ let currentID
 window.addEventListener('load', displayStoredCards)
 inputButton.addEventListener('click', createNewCard)
 
-const savedCards = {
-  method: 'GET'
-}
-
-const newCard = {
-  method: 'POST',
-  body: JSON.stringify({
-    id: currentID,
-    name: inputName.value,
-    diet: inputDiet.value,
-    fun_fact: inputFact.value
-  }),
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
-
 // functions
 
 function displayStoredCards() {
   fetch('http://localhost:3001/api/v1/animals')
     .then(response => response.json())
     .then(animals => {
-      currentID = animals.length
+      currentID = animals.length + 1
 
       animals.forEach(animal => createCardElement(animal))
     })
 }
 
 function createNewCard() {
+  const newCard = {
+    method: 'POST',
+    body: JSON.stringify({
+      id: currentID,
+      name: inputName.value,
+      diet: inputDiet.value,
+      fun_fact: inputFact.value
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
   fetch('http://localhost:3001/api/v1/animals', newCard)
     .then(response => response.json())
-    .then(animal => console.log(animal))
+    .then(animal => createCardElement(animal))
     .catch(error => console.log(error))
+
+  currentID += 1
 }
 
 function createCardElement(input) {

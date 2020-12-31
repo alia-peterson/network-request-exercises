@@ -1,0 +1,46 @@
+body, html {
+  background-image: url(https://media.wired.com/photos/59822d6fbc944559d607e43a/191:100/w_2400,h_1256,c_limit/PeacockHP-691483428.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  color: white;
+  font-family: "Anton", sans-serif;
+  font-size: 3em;
+  text-align: center;
+  text-shadow: 2px 2px black;
+  width: 98%;
+}
+
+.card {
+  background-color: #2196F3;
+  max-width: 350px;
+  min-width: 225px;
+  opacity: 0.9;
+  padding: 1em;
+  width: 30vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+}
+
+.main--form {
+  width: 25%;
+}
+
+.main--cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em;
+  width: 75%;
+}

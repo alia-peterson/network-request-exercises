@@ -5,7 +5,8 @@ const inputDiet = document.getElementById('input--diet')
 const inputFact = document.getElementById('input--fact')
 const inputButton = document.getElementById('input--button')
 const cardTemplate = document.getElementById('template--card')
-const cardDisplay = document.querySelector('.main--cards')
+const cardDisplay = document.querySelector('.main')
+let currentID
 
 // event handlers
 
@@ -20,9 +21,9 @@ const newCard = {
   method: 'POST',
   body: JSON.stringify({
     id: 5,
-    name: 'cats',
-    diet: 'meat, meat, and more meat',
-    fun_fact: 'housecats aren\'t 100% domesticated'
+    name: inputName.value,
+    diet: inputDiet.value,
+    fun_fact: inputFact.value
   }),
   headers: {
     'Content-Type': 'application/json'
@@ -35,9 +36,12 @@ function displayStoredCards() {
   fetch('http://localhost:3001/api/v1/animals')
   .then(response => response.json())
   .then(animals => {
+    currentID = animals.length
+    console.log(currentID);
     animals.forEach(animal => {
       const card = cardTemplate.content.cloneNode(true)
-      card.querySelector('h3.card--name').innerText = animal.name
+      card.querySelector('p.card--id').innerText = animal.id
+      card.querySelector('h2.card--name').innerText = animal.name
       card.querySelector('p.card--diet').innerText = animal.diet
       card.querySelector('p.card--fact').innerText = animal.fun_fact
 

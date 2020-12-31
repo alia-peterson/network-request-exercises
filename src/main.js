@@ -3,7 +3,6 @@
 const inputName = document.getElementById('input--name')
 const inputDiet = document.getElementById('input--diet')
 const inputFact = document.getElementById('input--fact')
-const inputButton = document.getElementById('input--button')
 const cardTemplate = document.getElementById('template--card')
 const cardDisplay = document.querySelector('.main')
 let currentID
@@ -11,7 +10,6 @@ let currentID
 // event handlers
 
 window.addEventListener('load', displayStoredCards)
-inputButton.addEventListener('click', createNewCard)
 
 // functions
 
@@ -19,7 +17,9 @@ function displayStoredCards() {
   fetch('http://localhost:3001/api/v1/animals')
     .then(response => response.json())
     .then(animals => {
-      currentID = animals.length + 1
+      const lastAnimalIndex = animals.length - 1
+      const lastAnimalID = animals[lastAnimalIndex].id
+      currentID = lastAnimalID + 1
 
       animals.forEach(animal => createCardElement(animal))
     })
@@ -49,10 +49,20 @@ function createNewCard() {
 
 function createCardElement(input) {
   const card = cardTemplate.content.cloneNode(true)
+  card.querySelector('article.main--card').id = input.id
   card.querySelector('p.card--id').innerText = input.id
   card.querySelector('h2.card--name').innerText = input.name
   card.querySelector('p.card--diet').innerText = input.diet
   card.querySelector('p.card--fact').innerText = input.fun_fact
 
   cardDisplay.appendChild(card)
+}
+
+function deleteCard() {
+  const thisCard = event.target.closest('.main--card')
+  cardDisplay.removeChild(thisCard)
+
+  fetch(`http://localhost:3001/api/v1/animals/${thisCard.id}`, {
+    method: 'DELETE'
+  })
 }

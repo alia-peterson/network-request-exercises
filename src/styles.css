@@ -1,0 +1,83 @@
+body, html {
+  background-image: url(https://media.wired.com/photos/59822d6fbc944559d607e43a/191:100/w_2400,h_1256,c_limit/PeacockHP-691483428.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Lato", sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: white;
+  font-family: "Anton", sans-serif;
+  font-size: 3em;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+p {
+  text-transform: capitalize;
+}
+
+.card--delete {
+  background-color: #2196F3;
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  z-index: 1;
+}
+
+.card--id {
+  right: 10%;
+  bottom: 1%;
+  position: absolute;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.header {
+  background-color: black;
+  text-align: center;
+  padding: 5px 0 5px 0;
+  opacity: 0.8;
+  width: 100%;
+}
+
+.main {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(auto-fit, minmax(1fr, 20%));
+  padding: 1em;
+}
+
+.main--card {
+  backdrop-filter: blur(4px);
+  background-color: #2196F3;
+  opacity: 0.9;
+  padding: 1em;
+  position: relative;
+}
+
+.main--form {
+  align-items: center;
+  backdrop-filter: blur(4px);
+  background-color: #81C784;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  padding-bottom: 1em;
+}

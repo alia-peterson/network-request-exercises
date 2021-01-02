@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Animal Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="header">
+      <h1>Animal Adventure</h1>
+    </header>
+    <main class="main">
+      <article class="main--form">
+        <h2>Create a New Animal Card</h2>
+        <form class="form" action="http://localhost:3001/api/v1/users" method="post">
+          <label for="animalName">Name of Animal</label>
+          <input id="input--name" type="text" name="animalName" placeholder="domestic housecat">
+          <label for="animalDiet">Diet of Animal</label>
+          <input id="input--diet" type="text" name="animalDiet" placeholder="meat, meat, & more meat!">
+          <label for="animalFact">Fun Fact about Animal</label>
+          <input id="input--fact" type="text" name="animalFact" placeholder="housecats aren't 100% domesticated">
+          <input id="input--button" type="button" name="submit" value="Submit" onclick="createNewCard()">
+        </form>
+      </article>
+      <template id="template--card">
+        <article class="main--card" id="0">
+          <button class="card--delete" type="button" name="button" onclick="deleteCard()">X</button>
+          <h2 class="card--name">Animal Name</h2>
+          <h3>Diet</h3>
+          <p class="card--diet">Animal Diet</p>
+          <h3>Fun Fact</h3>
+          <p class="card--fact">Animal Fun Fact</p>
+          <p class="card--id">00</p>
+        </article>
+      </template>
+    </main>
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>

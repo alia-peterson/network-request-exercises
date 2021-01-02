@@ -26,25 +26,30 @@ function displayStoredCards() {
 }
 
 function createNewCard() {
-  const newCard = {
-    method: 'POST',
-    body: JSON.stringify({
-      id: currentID,
-      name: inputName.value,
-      diet: inputDiet.value,
-      fun_fact: inputFact.value
-    }),
-    headers: {
-      'Content-Type': 'application/json'
+  if (inputName.value && inputDiet.value && inputFact.value) {
+    const newCard = {
+      method: 'POST',
+      body: JSON.stringify({
+        id: currentID,
+        name: inputName.value,
+        diet: inputDiet.value,
+        fun_fact: inputFact.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
-  }
 
-  fetch('http://localhost:3001/api/v1/animals', newCard)
+    fetch('http://localhost:3001/api/v1/animals', newCard)
     .then(response => response.json())
     .then(animal => createCardElement(animal))
     .catch(error => console.log(error))
 
-  currentID += 1
+    currentID += 1
+
+  } else {
+    window.alert('Please fill out all fields before submitting your new card')
+  }
 }
 
 function createCardElement(input) {
